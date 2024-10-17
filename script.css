@@ -1,0 +1,50 @@
+function validateForm() {
+  let valid = true;
+
+  // Full Name Validation
+  const name = document.getElementById('name').value.trim();
+  const nameError = document.getElementById('nameError');
+  if (name.length < 3) {
+    nameError.textContent = 'Name must be at least 3 characters long';
+    nameError.style.display = 'block';
+    valid = false;
+  } else {
+    nameError.style.display = 'none';
+  }
+
+  // Email Validation
+  const email = document.getElementById('email').value.trim();
+  const emailError = document.getElementById('emailError');
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    emailError.textContent = 'Please enter a valid email';
+    emailError.style.display = 'block';
+    valid = false;
+  } else {
+    emailError.style.display = 'none';
+  }
+
+  // Password Validation
+  const password = document.getElementById('password').value.trim();
+  const passwordError = document.getElementById('passwordError');
+  if (password.length < 6) {
+    passwordError.textContent = 'Password must be at least 6 characters long';
+    passwordError.style.display = 'block';
+    valid = false;
+  } else {
+    passwordError.style.display = 'none';
+  }
+
+  // Confirm Password Validation
+  const confirmPassword = document.getElementById('confirmPassword').value.trim();
+  const confirmPasswordError = document.getElementById('confirmPasswordError');
+  if (password !== confirmPassword) {
+    confirmPasswordError.textContent = 'Passwords do not match';
+    confirmPasswordError.style.display = 'block';
+    valid = false;
+  } else {
+    confirmPasswordError.style.display = 'none';
+  }
+
+  return valid;
+}
